@@ -112,46 +112,48 @@ class Qwen2AudioVerifier:
         return _parse_json_response(response)
 
 
-# ── Audio Flamingo 2 backend (placeholder) ────────────────────
+# ── Music Flamingo backend (nvidia/music-flamingo-hf) ─────────
 
-class AudioFlamingoVerifier:
+class MusicFlamingoVerifier:
     """
-    Verification using Audio Flamingo 2 / Music Flamingo.
+    Verification using NVIDIA Music Flamingo (HuggingFace).
 
-    NOTE: As of this writing, Music Flamingo weights may not yet be publicly
-    available on HuggingFace. This class provides the interface so that when
-    weights become available, you can drop them in.
+    Model: nvidia/music-flamingo-hf
+    Built on Audio Flamingo 3 backbone, music-specialized via
+    MF-Skills + MF-Think datasets and GRPO reinforcement learning.
+    Requires: transformers >= 4.43, HF_TOKEN for gated model access.
 
-    If you have a local clone of the Music Flamingo repo, set model_id to the
-    local path.
+    Reference: https://huggingface.co/nvidia/music-flamingo-hf
     """
 
     def __init__(
         self,
-        model_id: str = "audio-flamingo/audio-flamingo-2",
+        model_id: str = "nvidia/music-flamingo-hf",
         device: str = "cuda",
         torch_dtype: str = "bfloat16",
     ):
-        # Attempt to load; fall back to a clear error message
+        import os
         try:
             from transformers import AutoModelForCausalLM, AutoProcessor
             dtype = getattr(torch, torch_dtype, torch.bfloat16)
-            print(f"Loading Audio Flamingo: {model_id}")
+            hf_token = os.environ.get("HF_TOKEN")
+            print(f"Loading Music Flamingo: {model_id}")
             self.processor = AutoProcessor.from_pretrained(
-                model_id, trust_remote_code=True
+                model_id, trust_remote_code=True, token=hf_token,
             )
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_id, torch_dtype=dtype, device_map=device,
-                trust_remote_code=True,
+                trust_remote_code=True, token=hf_token,
             )
             self.model.eval()
             self.device = device
             self._available = True
         except Exception as e:
             print(
-                f"WARNING: Could not load Audio Flamingo ({e}). "
-                f"Falling back to Qwen2-Audio. To use Audio Flamingo, "
-                f"ensure the model is downloaded or cloned locally."
+                f"WARNING: Could not load Music Flamingo ({e}). "
+                f"Falling back to Qwen2-Audio. To use Music Flamingo, "
+                f"ensure HF_TOKEN is set and you have accepted the model "
+                f"license at https://huggingface.co/nvidia/music-flamingo-hf"
             )
             self._fallback = Qwen2AudioVerifier(device=device, torch_dtype=torch_dtype)
             self._available = False
@@ -163,13 +165,30 @@ class AudioFlamingoVerifier:
         import librosa
         audio, sr = librosa.load(audio_path, sr=16000, mono=True)
 
-        prompt = (
-            f"{SYSTEM_PROMPT}\n\n"
-            f"Question: {question}\n\nRespond with JSON."
+        # Music Flamingo uses a chat-template conversation format
+        conversation = [
+            {
+                "role": "system",
+                "content": [{"type": "text", "text": SYSTEM_PROMPT}],
+            },
+            {
+                "role": "user",
+                "content": [
+                    {"type": "audio", "audio_url": audio_path},
+                    {"type": "text", "text": (
+                        f"Question: {question}\n\n"
+                        f"Respond with the JSON format specified."
+                    )},
+                ],
+            },
+        ]
+
+        text = self.processor.apply_chat_template(
+            conversation, add_generation_prompt=True, tokenize=False
         )
 
         inputs = self.processor(
-            text=prompt, audios=[audio], return_tensors="pt",
+            text=text, audios=[audio], return_tensors="pt",
             sampling_rate=16000,
         )
         inputs = {k: v.to(self.device) if hasattr(v, "to") else v
@@ -206,14 +225,21 @@ def _parse_json_response(text: str) -> dict:
         return {"answer": None, "confidence": 0.0, "evidence": f"Parse error: {text[:200]}"}
 
 
+# Backward-compatible alias
+AudioFlamingoVerifier = MusicFlamingoVerifier
+
+
 def get_verifier(backend: str = "qwen2-audio", **kwargs):
     """Factory: return the appropriate verifier backend."""
     if backend == "qwen2-audio":
         return Qwen2AudioVerifier(**kwargs)
-    elif backend in ("audio-flamingo", "audio-flamingo-2"):
-        return AudioFlamingoVerifier(**kwargs)
+    elif backend in ("music-flamingo", "audio-flamingo", "audio-flamingo-2"):
+        return MusicFlamingoVerifier(**kwargs)
     else:
-        raise ValueError(f"Unknown backend: {backend}. Use 'qwen2-audio' or 'audio-flamingo'.")
+        raise ValueError(
+            f"Unknown backend: {backend}. "
+            f"Use 'qwen2-audio' or 'music-flamingo'."
+        )
 
 
 def verify_fact_audio_llm(
@@ -315,7 +341,7 @@ if __name__ == "__main__":
     parser.add_argument("--prompts", default="prompts/seed_prompts.json")
     parser.add_argument("--output", default="outputs/verification_results/audio_llm/")
     parser.add_argument("--backend", default="qwen2-audio",
-                        choices=["qwen2-audio", "audio-flamingo", "audio-flamingo-2"])
+                        choices=["qwen2-audio", "music-flamingo", "audio-flamingo"])
     parser.add_argument("--model_id", default=None)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--torch_dtype", default="bfloat16")

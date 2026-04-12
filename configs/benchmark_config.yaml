@@ -30,8 +30,8 @@ gemini:
 
 # ── Verification: Open-source audio-LLM ──────────────────────
 audio_llm:
-  backend: qwen2-audio                  # qwen2-audio | audio-flamingo-2
-  model_id: Qwen/Qwen2-Audio-7B-Instruct
+  backend: music-flamingo               # music-flamingo | qwen2-audio
+  model_id: nvidia/music-flamingo-hf
   device: cuda
   torch_dtype: bfloat16
   max_new_tokens: 512
