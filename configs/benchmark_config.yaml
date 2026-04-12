@@ -1,0 +1,52 @@
+# ═══════════════════════════════════════════════════════════════
+#  Multicultural Music Hallucination Benchmark — Master Config
+# ═══════════════════════════════════════════════════════════════
+
+paths:
+  prompts: prompts/seed_prompts.json
+  generated_audio: outputs/generated_audio/
+  verification_results: outputs/verification_results/
+  final_scores: outputs/scores/
+  figures: outputs/figures/
+
+# ── Audio generation ──────────────────────────────────────────
+generation:
+  model: facebook/musicgen-large       # HuggingFace model ID
+  duration_sec: 10                      # Per-clip generation length
+  sampling_rate: 32000
+  guidance_scale: 3.0
+  max_new_tokens: 1024
+  batch_size: 4
+  device: cuda                          # cuda | cpu
+
+# ── Verification: Gemini ──────────────────────────────────────
+gemini:
+  model: gemini-2.0-flash               # gemini-2.0-flash | gemini-1.5-pro
+  # Set env var GOOGLE_API_KEY or put key below (NOT recommended)
+  api_key_env: GOOGLE_API_KEY
+  temperature: 0.0
+  max_retries: 3
+  requests_per_minute: 15               # API rate limit
+
+# ── Verification: Open-source audio-LLM ──────────────────────
+audio_llm:
+  backend: qwen2-audio                  # qwen2-audio | audio-flamingo-2
+  model_id: Qwen/Qwen2-Audio-7B-Instruct
+  device: cuda
+  torch_dtype: bfloat16
+  max_new_tokens: 512
+
+# ── Evaluation settings ──────────────────────────────────────
+evaluation:
+  # Hallucination scoring
+  binary_threshold: 0.5                 # For soft verification scores
+  # Genre stratification
+  traditions:
+    - carnatic
+    - hindustani
+    - turkish_makam
+    - arab_andalusian
+    - western_control
+  # Analysis
+  bootstrap_n: 1000                     # Bootstrap resamples for CIs
+  significance_level: 0.05

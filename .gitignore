@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Outputs (large / regenerable)
+outputs/generated_audio/
+outputs/verification_results/
+outputs/scores/
+outputs/figures/
+
+# Secrets
+.env
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
