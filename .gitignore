@@ -18,14 +18,16 @@ env/
 *.swo
 
 # Outputs (large / regenerable)
-outputs/generated_audio/
-outputs/verification_results/
-outputs/scores/
-outputs/figures/
+outputs/
+logs/
 
 # Secrets
 .env
 *.key
+
+# Pytest / build
+.pytest_cache/
+*.egg-info/
 
 # OS
 .DS_Store
