@@ -1,0 +1,36 @@
+# Moroccan Andalusian mizān (rhythmic cycles). Five canonical mizans.
+# Fields:
+#   beats: total beats per cycle
+#   accent_pattern: accent grouping
+#   position_in_nuba: order within a standard nuba
+#   aliases
+
+basit:
+  aliases: [al-basit]
+  beats: 6
+  accent_pattern: "slow-triplet feel"
+  position_in_nuba: 1
+
+qaim_wa_nisf:
+  aliases: [qaim_nisf, qaim-wa-nisf]
+  beats: 8
+  accent_pattern: "3+2+3 variant"
+  position_in_nuba: 2
+
+btayhi:
+  aliases: [b-tayhi, btay7i]
+  beats: 8
+  accent_pattern: "2+2+2+2 with syncopation"
+  position_in_nuba: 3
+
+darj:
+  aliases: [al-darj]
+  beats: 4
+  accent_pattern: "2+2"
+  position_in_nuba: 4
+
+quddam:
+  aliases: [al-quddam]
+  beats: 3
+  accent_pattern: "1+1+1 (fast)"
+  position_in_nuba: 5

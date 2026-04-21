@@ -1,0 +1,78 @@
+# Hindustani ragas — canonical name -> metadata.
+# Non-exhaustive; add as loaders encounter new names (logged to vocab_misses.json).
+# Fields:
+#   thaat:          parent thaat
+#   aliases:        alternate spellings
+#   time_of_day:    traditional time association (descriptive only)
+#   characteristic: short human-readable descriptor, used in fact claims
+#   scale_degrees:  standard ascending notes using S R1/R2 G1/G2 M1/M2 P D1/D2 N1/N2 notation
+
+yaman:
+  aliases: [kalyan, kalyani_hindustani, yaman_kalyan, iman]
+  thaat: kalyan
+  scale_degrees: "S R G M# P D N"
+  characteristic: "sharp fourth (tivra Ma); evening raga"
+  time_of_day: evening
+
+bhairavi:
+  aliases: [bhairvi]
+  thaat: bhairavi
+  scale_degrees: "S r g M P d n"
+  characteristic: "all komal (flat) swaras except Sa and Pa; often concluding raga"
+  time_of_day: morning
+
+bhairav:
+  aliases: []
+  thaat: bhairav
+  scale_degrees: "S r G M P d N"
+  characteristic: "komal Re and Dha; meditative morning raga"
+  time_of_day: morning
+
+darbari:
+  aliases: [darbari_kanada, darbari_kanhada]
+  thaat: asavari
+  scale_degrees: "S R g M P d n"
+  characteristic: "komal Ga and Dha with slow andolan; majestic"
+  time_of_day: late_night
+
+malkauns:
+  aliases: [malkaus]
+  thaat: bhairavi
+  scale_degrees: "S g M d n"
+  characteristic: "pentatonic, komal Ga/Dha/Ni; contemplative"
+  time_of_day: late_night
+
+bageshri:
+  aliases: [bageshree, bageshwari]
+  thaat: kafi
+  scale_degrees: "S g M P D n"
+  characteristic: "komal Ga and Ni; romantic late-night"
+  time_of_day: late_night
+
+desh:
+  aliases: [des]
+  thaat: khamaj
+  scale_degrees: "S R M P N ; S n D P"
+  characteristic: "shuddha Ni ascending, komal Ni descending; monsoon"
+  time_of_day: night
+
+todi:
+  aliases: [miyan_ki_todi]
+  thaat: todi
+  scale_degrees: "S r g M# P d N"
+  characteristic: "all komal plus tivra Ma; morning"
+  time_of_day: morning
+
+marwa:
+  aliases: []
+  thaat: marwa
+  scale_degrees: "S r G M# D N"
+  characteristic: "komal Re, tivra Ma, no Pa; evening twilight"
+  time_of_day: twilight
+
+puriya_dhanashri:
+  aliases: [puriyadhanashree, puriya_dhanasri]
+  thaat: purvi
+  scale_degrees: "S r G M# P d N"
+  characteristic: "komal Re and Dha, tivra Ma; evening"
+  time_of_day: evening

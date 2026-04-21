@@ -1,0 +1,55 @@
+# Turkish makamlar (selected common).
+# Fields:
+#   aliases: spelling variants
+#   tonic (karar): traditional final tone (descriptive)
+#   characteristic: interval-structure descriptor (in Holdrian/53-TET terms for descriptive use)
+
+hicaz:
+  aliases: [hijaz, hijaz_turkish]
+  karar: dugah
+  characteristic: "augmented-second in lower tetrachord (hicaz tetrachord)"
+
+rast:
+  aliases: []
+  karar: rast
+  characteristic: "rast pentachord with neutral third (koma-flat Si)"
+
+nihavend:
+  aliases: [nihavent]
+  karar: rast
+  characteristic: "minor-like; buselik pentachord + kurdi tetrachord"
+
+ussak:
+  aliases: [ussâk, uşşak, ussaq]
+  karar: dugah
+  characteristic: "ussak tetrachord with neutral second"
+
+kurdi:
+  aliases: [kurd]
+  karar: dugah
+  characteristic: "kurdi tetrachord (Phrygian-like)"
+
+huseyni:
+  aliases: [hüseyni]
+  karar: dugah
+  characteristic: "ussak-like but different seyir; neutral thirds"
+
+saba:
+  aliases: [sabâ]
+  karar: dugah
+  characteristic: "distinct lowered fourth (saba tetrachord)"
+
+segah:
+  aliases: [segâh, segâh_turkish]
+  karar: segah
+  characteristic: "neutral-third centered; koma inflection"
+
+suzinak:
+  aliases: [suzinâk]
+  karar: rast
+  characteristic: "rast pentachord + hicaz tetrachord"
+
+acemasiran:
+  aliases: [acem_asiran, acemaşiran]
+  karar: acem
+  characteristic: "major-like (cargah-centered), soft beys"

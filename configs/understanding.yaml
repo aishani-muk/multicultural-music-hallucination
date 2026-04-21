@@ -1,0 +1,31 @@
+# Understanding track: Gemini + Music Flamingo on real multicultural audio.
+# Inherit paths/defaults from `default.yaml` in spirit; this file overrides.
+
+seed: 848
+
+paths:
+  curated: outputs/curated
+  verification_results: outputs/verification_results
+  final_scores: outputs/scores
+  figures: outputs/figures
+
+verifiers:
+  - gemini
+  - music_flamingo
+
+gemini:
+  model: gemini-2.5-flash
+  requests_per_minute: 15
+  max_retries: 3
+  temperature: 0.0
+  max_output_tokens: 512
+
+music_flamingo:
+  model_id: nvidia/audio-flamingo-3
+  device: cuda
+  torch_dtype: bfloat16
+  max_new_tokens: 256
+
+evaluation:
+  bootstrap_n: 1000
+  alpha: 0.05

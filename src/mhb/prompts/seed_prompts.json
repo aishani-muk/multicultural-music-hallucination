@@ -1,0 +1,1010 @@
+[
+  {
+    "prompt_id": "carnatic_001",
+    "tradition": "carnatic",
+    "generation_prompt": "A Carnatic kriti in raga Shankarabharanam with mridangam accompaniment in Adi tala",
+    "description": "Auto-derived prompt for carnatic/shankarabharanam/adi",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_modal_scale_positive",
+        "category": "modal_system",
+        "claim": "The melody uses the swaras of raga shankarabharanam.",
+        "verification_question": "Does the melody follow a scale pattern consistent with raga shankarabharanam?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:modal_scale_positive",
+        "grounding": "ground_truth.modal_system.name"
+      },
+      {
+        "fact_id": "auto_tpl_001_metric_cycle_positive",
+        "category": "metric_cycle",
+        "claim": "The percussion follows a 8-beat tala cycle (adi).",
+        "verification_question": "Does the percussion follow a 8-beat cyclic pattern consistent with adi tala?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:metric_cycle_positive",
+        "grounding": "ground_truth.metric_cycle.name"
+      },
+      {
+        "fact_id": "auto_tpl_002_tambura_drone",
+        "category": "cultural",
+        "claim": "A continuous tambura/tanpura drone is present.",
+        "verification_question": "Is a continuous drone (tambura or shruti box) audible in the background?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:tambura_drone",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_tpl_003_gamaka_ornamentation",
+        "category": "cultural",
+        "claim": "Ornamental pitch oscillations (gamakas) are present in the melody.",
+        "verification_question": "Does the melody feature ornamental pitch oscillations/slides characteristic of Carnatic music (gamakas)?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:gamaka_ornamentation",
+        "grounding": "tradition=carnatic"
+      },
+      {
+        "fact_id": "auto_tpl_004_form_label",
+        "category": "form",
+        "claim": "The performance is in kriti form.",
+        "verification_question": "Does the piece have the structural characteristics of a Carnatic kriti?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:form_label",
+        "grounding": "ground_truth.form"
+      },
+      {
+        "fact_id": "auto_inst_pos_005_voice",
+        "category": "instrument",
+        "claim": "The instrument 'voice' is present.",
+        "verification_question": "Is 'voice' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[voice]"
+      },
+      {
+        "fact_id": "auto_inst_pos_006_mridangam",
+        "category": "instrument",
+        "claim": "The instrument 'mridangam' is present.",
+        "verification_question": "Is 'mridangam' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[mridangam]"
+      },
+      {
+        "fact_id": "auto_inst_pos_007_tanpura",
+        "category": "instrument",
+        "claim": "The instrument 'tanpura' is present.",
+        "verification_question": "Is 'tanpura' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_inst_neg_008_drum_kit",
+        "category": "instrument",
+        "claim": "'drum_kit' is NOT present.",
+        "verification_question": "Is a 'drum kit' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~carnatic"
+      },
+      {
+        "fact_id": "auto_inst_neg_009_electric_guitar",
+        "category": "instrument",
+        "claim": "'electric_guitar' is NOT present.",
+        "verification_question": "Is a 'electric guitar' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~carnatic"
+      },
+      {
+        "fact_id": "auto_inst_neg_010_ney",
+        "category": "instrument",
+        "claim": "'ney' is NOT present.",
+        "verification_question": "Is a 'ney' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~carnatic"
+      }
+    ],
+    "reference_metadata": {
+      "modal": "shankarabharanam",
+      "cycle": "adi",
+      "form": "kriti",
+      "instruments": [
+        "voice",
+        "mridangam",
+        "tanpura"
+      ]
+    }
+  },
+  {
+    "prompt_id": "carnatic_002",
+    "tradition": "carnatic",
+    "generation_prompt": "A Carnatic violin alapana in raga Kalyani with tambura drone",
+    "description": "Auto-derived prompt for carnatic/kalyani/None",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_modal_scale_positive",
+        "category": "modal_system",
+        "claim": "The melody uses the swaras of raga kalyani.",
+        "verification_question": "Does the melody follow a scale pattern consistent with raga kalyani?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:modal_scale_positive",
+        "grounding": "ground_truth.modal_system.name"
+      },
+      {
+        "fact_id": "auto_tpl_001_tambura_drone",
+        "category": "cultural",
+        "claim": "A continuous tambura/tanpura drone is present.",
+        "verification_question": "Is a continuous drone (tambura or shruti box) audible in the background?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:tambura_drone",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_tpl_002_gamaka_ornamentation",
+        "category": "cultural",
+        "claim": "Ornamental pitch oscillations (gamakas) are present in the melody.",
+        "verification_question": "Does the melody feature ornamental pitch oscillations/slides characteristic of Carnatic music (gamakas)?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:gamaka_ornamentation",
+        "grounding": "tradition=carnatic"
+      },
+      {
+        "fact_id": "auto_tpl_003_form_label",
+        "category": "form",
+        "claim": "The performance is in alapana form.",
+        "verification_question": "Does the piece have the structural characteristics of a Carnatic alapana?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:form_label",
+        "grounding": "ground_truth.form"
+      },
+      {
+        "fact_id": "auto_inst_pos_004_violin_carnatic",
+        "category": "instrument",
+        "claim": "The instrument 'violin_carnatic' is present.",
+        "verification_question": "Is 'violin carnatic' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[violin_carnatic]"
+      },
+      {
+        "fact_id": "auto_inst_pos_005_tanpura",
+        "category": "instrument",
+        "claim": "The instrument 'tanpura' is present.",
+        "verification_question": "Is 'tanpura' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_inst_neg_006_drum_kit",
+        "category": "instrument",
+        "claim": "'drum_kit' is NOT present.",
+        "verification_question": "Is a 'drum kit' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~carnatic"
+      },
+      {
+        "fact_id": "auto_inst_neg_007_electric_guitar",
+        "category": "instrument",
+        "claim": "'electric_guitar' is NOT present.",
+        "verification_question": "Is a 'electric guitar' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~carnatic"
+      },
+      {
+        "fact_id": "auto_inst_neg_008_ney",
+        "category": "instrument",
+        "claim": "'ney' is NOT present.",
+        "verification_question": "Is a 'ney' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~carnatic"
+      }
+    ],
+    "reference_metadata": {
+      "modal": "kalyani",
+      "cycle": null,
+      "form": "alapana",
+      "instruments": [
+        "violin_carnatic",
+        "tanpura"
+      ]
+    }
+  },
+  {
+    "prompt_id": "hindustani_001",
+    "tradition": "hindustani",
+    "generation_prompt": "A Hindustani sitar performance in raga Yaman with tabla in teental",
+    "description": "Auto-derived prompt for hindustani/yaman/teental",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_modal_scale_positive",
+        "category": "modal_system",
+        "claim": "The melody uses the scale of raga yaman.",
+        "verification_question": "Does the melody follow a scale pattern consistent with raga yaman?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:modal_scale_positive",
+        "grounding": "ground_truth.modal_system.name"
+      },
+      {
+        "fact_id": "auto_tpl_001_metric_cycle_positive",
+        "category": "metric_cycle",
+        "claim": "The percussion follows a 16-beat cyclic pattern (teental).",
+        "verification_question": "Does the percussion follow a 16-beat cyclic pattern consistent with teental?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:metric_cycle_positive",
+        "grounding": "ground_truth.metric_cycle.name"
+      },
+      {
+        "fact_id": "auto_tpl_002_tanpura_drone",
+        "category": "cultural",
+        "claim": "A continuous tanpura drone is present.",
+        "verification_question": "Is a continuous, unbroken tanpura-like drone audible in the background?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:tanpura_drone",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_tpl_003_meend_ornamentation",
+        "category": "cultural",
+        "claim": "Characteristic pitch-bending (meend) is present on the lead instrument.",
+        "verification_question": "Does the lead melodic instrument use long gliding pitch bends (meend) between notes?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:meend_ornamentation",
+        "grounding": "ground_truth.instruments"
+      },
+      {
+        "fact_id": "auto_tpl_004_form_label",
+        "category": "form",
+        "claim": "The performance is in khayal form.",
+        "verification_question": "Does the piece have the structural characteristics of Hindustani khayal?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:form_label",
+        "grounding": "ground_truth.form"
+      },
+      {
+        "fact_id": "auto_inst_pos_005_sitar",
+        "category": "instrument",
+        "claim": "The instrument 'sitar' is present.",
+        "verification_question": "Is 'sitar' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[sitar]"
+      },
+      {
+        "fact_id": "auto_inst_pos_006_tabla",
+        "category": "instrument",
+        "claim": "The instrument 'tabla' is present.",
+        "verification_question": "Is 'tabla' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[tabla]"
+      },
+      {
+        "fact_id": "auto_inst_pos_007_tanpura",
+        "category": "instrument",
+        "claim": "The instrument 'tanpura' is present.",
+        "verification_question": "Is 'tanpura' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_inst_neg_008_drum_kit",
+        "category": "instrument",
+        "claim": "'drum_kit' is NOT present.",
+        "verification_question": "Is a 'drum kit' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~hindustani"
+      },
+      {
+        "fact_id": "auto_inst_neg_009_electric_guitar",
+        "category": "instrument",
+        "claim": "'electric_guitar' is NOT present.",
+        "verification_question": "Is a 'electric guitar' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~hindustani"
+      },
+      {
+        "fact_id": "auto_inst_neg_010_ney",
+        "category": "instrument",
+        "claim": "'ney' is NOT present.",
+        "verification_question": "Is a 'ney' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~hindustani"
+      }
+    ],
+    "reference_metadata": {
+      "modal": "yaman",
+      "cycle": "teental",
+      "form": "khayal",
+      "instruments": [
+        "sitar",
+        "tabla",
+        "tanpura"
+      ]
+    }
+  },
+  {
+    "prompt_id": "hindustani_002",
+    "tradition": "hindustani",
+    "generation_prompt": "A Hindustani vocal thumri in raga Bhairavi with harmonium and tabla in rupak tala",
+    "description": "Auto-derived prompt for hindustani/bhairavi/rupak",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_modal_scale_positive",
+        "category": "modal_system",
+        "claim": "The melody uses the scale of raga bhairavi.",
+        "verification_question": "Does the melody follow a scale pattern consistent with raga bhairavi?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:modal_scale_positive",
+        "grounding": "ground_truth.modal_system.name"
+      },
+      {
+        "fact_id": "auto_tpl_001_metric_cycle_positive",
+        "category": "metric_cycle",
+        "claim": "The percussion follows a 7-beat cyclic pattern (rupak).",
+        "verification_question": "Does the percussion follow a 7-beat cyclic pattern consistent with rupak?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:metric_cycle_positive",
+        "grounding": "ground_truth.metric_cycle.name"
+      },
+      {
+        "fact_id": "auto_tpl_002_tanpura_drone",
+        "category": "cultural",
+        "claim": "A continuous tanpura drone is present.",
+        "verification_question": "Is a continuous, unbroken tanpura-like drone audible in the background?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:tanpura_drone",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_tpl_003_form_label",
+        "category": "form",
+        "claim": "The performance is in thumri form.",
+        "verification_question": "Does the piece have the structural characteristics of Hindustani thumri?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:form_label",
+        "grounding": "ground_truth.form"
+      },
+      {
+        "fact_id": "auto_tpl_004_asymmetric_cycle_when_rupak",
+        "category": "rhythm",
+        "claim": "The rhythmic cycle is NOT standard 4/4.",
+        "verification_question": "Does the rhythmic cycle sound like standard 4/4 Western time?",
+        "expected_answer": false,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:asymmetric_cycle_when_rupak",
+        "grounding": "ground_truth.metric_cycle.name"
+      },
+      {
+        "fact_id": "auto_inst_pos_005_voice",
+        "category": "instrument",
+        "claim": "The instrument 'voice' is present.",
+        "verification_question": "Is 'voice' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[voice]"
+      },
+      {
+        "fact_id": "auto_inst_pos_006_harmonium",
+        "category": "instrument",
+        "claim": "The instrument 'harmonium' is present.",
+        "verification_question": "Is 'harmonium' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[harmonium]"
+      },
+      {
+        "fact_id": "auto_inst_pos_007_tabla",
+        "category": "instrument",
+        "claim": "The instrument 'tabla' is present.",
+        "verification_question": "Is 'tabla' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[tabla]"
+      },
+      {
+        "fact_id": "auto_inst_pos_008_tanpura",
+        "category": "instrument",
+        "claim": "The instrument 'tanpura' is present.",
+        "verification_question": "Is 'tanpura' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[tanpura]"
+      },
+      {
+        "fact_id": "auto_inst_neg_009_drum_kit",
+        "category": "instrument",
+        "claim": "'drum_kit' is NOT present.",
+        "verification_question": "Is a 'drum kit' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~hindustani"
+      },
+      {
+        "fact_id": "auto_inst_neg_010_electric_guitar",
+        "category": "instrument",
+        "claim": "'electric_guitar' is NOT present.",
+        "verification_question": "Is a 'electric guitar' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~hindustani"
+      },
+      {
+        "fact_id": "auto_inst_neg_011_ney",
+        "category": "instrument",
+        "claim": "'ney' is NOT present.",
+        "verification_question": "Is a 'ney' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~hindustani"
+      }
+    ],
+    "reference_metadata": {
+      "modal": "bhairavi",
+      "cycle": "rupak",
+      "form": "thumri",
+      "instruments": [
+        "voice",
+        "harmonium",
+        "tabla",
+        "tanpura"
+      ]
+    }
+  },
+  {
+    "prompt_id": "turkish_001",
+    "tradition": "turkish_makam",
+    "generation_prompt": "An Ottoman Turkish taksim in makam Hicaz on ney",
+    "description": "Auto-derived prompt for turkish_makam/hicaz/None",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_modal_makam_positive",
+        "category": "modal_system",
+        "claim": "The melody uses intervals of makam hicaz.",
+        "verification_question": "Does the melody use intervals consistent with makam hicaz?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:modal_makam_positive",
+        "grounding": "ground_truth.modal_system.name"
+      },
+      {
+        "fact_id": "auto_tpl_001_taksim_freerhythm",
+        "category": "structure",
+        "claim": "The performance is in free rhythm (taksim).",
+        "verification_question": "Is the performance in free rhythm without a fixed meter?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:taksim_freerhythm",
+        "grounding": "ground_truth.form or (no metric cycle)"
+      },
+      {
+        "fact_id": "auto_tpl_002_microtonal_intervals",
+        "category": "tuning",
+        "claim": "Microtonal intervals (not reducible to 12-TET) are present.",
+        "verification_question": "Does the melody include pitches that fall between the keys of a standard Western piano (microtonal intervals)?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:microtonal_intervals",
+        "grounding": "tradition=turkish_makam"
+      },
+      {
+        "fact_id": "auto_inst_pos_003_ney",
+        "category": "instrument",
+        "claim": "The instrument 'ney' is present.",
+        "verification_question": "Is 'ney' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[ney]"
+      },
+      {
+        "fact_id": "auto_inst_neg_004_drum_kit",
+        "category": "instrument",
+        "claim": "'drum_kit' is NOT present.",
+        "verification_question": "Is a 'drum kit' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~turkish_makam"
+      },
+      {
+        "fact_id": "auto_inst_neg_005_electric_guitar",
+        "category": "instrument",
+        "claim": "'electric_guitar' is NOT present.",
+        "verification_question": "Is a 'electric guitar' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~turkish_makam"
+      },
+      {
+        "fact_id": "auto_inst_neg_006_ghatam",
+        "category": "instrument",
+        "claim": "'ghatam' is NOT present.",
+        "verification_question": "Is a 'ghatam' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~turkish_makam"
+      }
+    ],
+    "reference_metadata": {
+      "modal": "hicaz",
+      "cycle": null,
+      "form": "taksim",
+      "instruments": [
+        "ney"
+      ]
+    }
+  },
+  {
+    "prompt_id": "turkish_002",
+    "tradition": "turkish_makam",
+    "generation_prompt": "A Turkish ensemble in makam Nihavend with kanun, oud, and kudum in aksak (9/8)",
+    "description": "Auto-derived prompt for turkish_makam/nihavend/aksak",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_modal_makam_positive",
+        "category": "modal_system",
+        "claim": "The melody uses intervals of makam nihavend.",
+        "verification_question": "Does the melody use intervals consistent with makam nihavend?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:modal_makam_positive",
+        "grounding": "ground_truth.modal_system.name"
+      },
+      {
+        "fact_id": "auto_tpl_001_usul_positive",
+        "category": "metric_cycle",
+        "claim": "The percussion follows usul aksak (9 beats).",
+        "verification_question": "Does the percussion follow a 9-beat cyclic pattern consistent with usul aksak?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:usul_positive",
+        "grounding": "ground_truth.metric_cycle.name"
+      },
+      {
+        "fact_id": "auto_tpl_002_microtonal_intervals",
+        "category": "tuning",
+        "claim": "Microtonal intervals (not reducible to 12-TET) are present.",
+        "verification_question": "Does the melody include pitches that fall between the keys of a standard Western piano (microtonal intervals)?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:microtonal_intervals",
+        "grounding": "tradition=turkish_makam"
+      },
+      {
+        "fact_id": "auto_tpl_003_aksak_asymmetry",
+        "category": "rhythm",
+        "claim": "The rhythmic cycle is asymmetric (not 4/4).",
+        "verification_question": "Does the rhythmic pattern have an asymmetric, limping quality (not standard 4/4)?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:aksak_asymmetry",
+        "grounding": "ground_truth.metric_cycle.name"
+      },
+      {
+        "fact_id": "auto_inst_pos_004_kanun",
+        "category": "instrument",
+        "claim": "The instrument 'kanun' is present.",
+        "verification_question": "Is 'kanun' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[kanun]"
+      },
+      {
+        "fact_id": "auto_inst_pos_005_oud",
+        "category": "instrument",
+        "claim": "The instrument 'oud' is present.",
+        "verification_question": "Is 'oud' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[oud]"
+      },
+      {
+        "fact_id": "auto_inst_pos_006_kudum",
+        "category": "instrument",
+        "claim": "The instrument 'kudum' is present.",
+        "verification_question": "Is 'kudum' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[kudum]"
+      },
+      {
+        "fact_id": "auto_inst_neg_007_drum_kit",
+        "category": "instrument",
+        "claim": "'drum_kit' is NOT present.",
+        "verification_question": "Is a 'drum kit' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~turkish_makam"
+      },
+      {
+        "fact_id": "auto_inst_neg_008_electric_guitar",
+        "category": "instrument",
+        "claim": "'electric_guitar' is NOT present.",
+        "verification_question": "Is a 'electric guitar' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~turkish_makam"
+      },
+      {
+        "fact_id": "auto_inst_neg_009_ghatam",
+        "category": "instrument",
+        "claim": "'ghatam' is NOT present.",
+        "verification_question": "Is a 'ghatam' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~turkish_makam"
+      }
+    ],
+    "reference_metadata": {
+      "modal": "nihavend",
+      "cycle": "aksak",
+      "form": "saz_semai",
+      "instruments": [
+        "kanun",
+        "oud",
+        "kudum"
+      ]
+    }
+  },
+  {
+    "prompt_id": "arab_001",
+    "tradition": "arab_andalusian",
+    "generation_prompt": "A Moroccan Andalusian nuba in Rasd al-Dhil with oud and rabab",
+    "description": "Auto-derived prompt for arab_andalusian/rasd_al_dhil/btayhi",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_modal_tab3_positive",
+        "category": "modal_system",
+        "claim": "The mode is rasd_al_dhil (Moroccan Andalusian tabʿ).",
+        "verification_question": "Does the melody follow a scale pattern consistent with Arab-Andalusian tabʿ rasd_al_dhil?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:modal_tab3_positive",
+        "grounding": "ground_truth.modal_system.name"
+      },
+      {
+        "fact_id": "auto_tpl_001_mizan_positive",
+        "category": "metric_cycle",
+        "claim": "The percussion follows mizān btayhi (8 beats).",
+        "verification_question": "Does the percussion follow a 8-beat cyclic pattern consistent with mizan btayhi?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:mizan_positive",
+        "grounding": "ground_truth.metric_cycle.name"
+      },
+      {
+        "fact_id": "auto_tpl_002_heterophonic_texture",
+        "category": "structure",
+        "claim": "The ensemble plays in heterophonic unison, not block harmony.",
+        "verification_question": "Does the ensemble play melodic lines in unison/heterophony rather than Western block harmony?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:heterophonic_texture",
+        "grounding": "tradition=arab_andalusian"
+      },
+      {
+        "fact_id": "auto_tpl_003_non_western_scale",
+        "category": "scale",
+        "claim": "The scale is NOT a Western major/minor scale.",
+        "verification_question": "Does the melody follow a standard Western major or minor scale?",
+        "expected_answer": false,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:non_western_scale",
+        "grounding": "tradition=arab_andalusian"
+      },
+      {
+        "fact_id": "auto_tpl_004_oud_or_rabab_lead",
+        "category": "instrument",
+        "claim": "A plucked oud or bowed rabab leads the ensemble.",
+        "verification_question": "Is an oud (short-necked fretless lute) or rabab (bowed string) audible as a lead?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:oud_or_rabab_lead",
+        "grounding": "ground_truth.instruments"
+      },
+      {
+        "fact_id": "auto_inst_pos_005_oud",
+        "category": "instrument",
+        "claim": "The instrument 'oud' is present.",
+        "verification_question": "Is 'oud' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[oud]"
+      },
+      {
+        "fact_id": "auto_inst_pos_006_rabab",
+        "category": "instrument",
+        "claim": "The instrument 'rabab' is present.",
+        "verification_question": "Is 'rabab' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[rabab]"
+      },
+      {
+        "fact_id": "auto_inst_pos_007_darbuka",
+        "category": "instrument",
+        "claim": "The instrument 'darbuka' is present.",
+        "verification_question": "Is 'darbuka' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[darbuka]"
+      },
+      {
+        "fact_id": "auto_inst_neg_008_drum_kit",
+        "category": "instrument",
+        "claim": "'drum_kit' is NOT present.",
+        "verification_question": "Is a 'drum kit' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~arab_andalusian"
+      },
+      {
+        "fact_id": "auto_inst_neg_009_electric_guitar",
+        "category": "instrument",
+        "claim": "'electric_guitar' is NOT present.",
+        "verification_question": "Is a 'electric guitar' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~arab_andalusian"
+      },
+      {
+        "fact_id": "auto_inst_neg_010_ghatam",
+        "category": "instrument",
+        "claim": "'ghatam' is NOT present.",
+        "verification_question": "Is a 'ghatam' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~arab_andalusian"
+      }
+    ],
+    "reference_metadata": {
+      "modal": "rasd_al_dhil",
+      "cycle": "btayhi",
+      "form": "nuba",
+      "instruments": [
+        "oud",
+        "rabab",
+        "darbuka"
+      ]
+    }
+  },
+  {
+    "prompt_id": "reggaeton_001",
+    "tradition": "reggaeton",
+    "generation_prompt": "A reggaeton track at ~95 BPM with a dembow beat and Spanish vocals",
+    "description": "Auto-derived prompt for reggaeton/None/dembow",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_tpl_000_dembow_cycle",
+        "category": "metric_cycle",
+        "claim": "The rhythm is a dembow pattern (3+3+2 boom-ch-boom-chick).",
+        "verification_question": "Does the percussion follow a dembow pattern (staccato snare/clap on off-beats over a steady kick)?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:dembow_cycle",
+        "grounding": "tradition=reggaeton"
+      },
+      {
+        "fact_id": "auto_tpl_001_tempo_band",
+        "category": "tempo",
+        "claim": "The tempo is in the reggaeton band (~90–105 BPM).",
+        "verification_question": "Is the tempo in the 90–105 BPM reggaeton range?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:tempo_band",
+        "grounding": "ground_truth.tempo_bpm"
+      },
+      {
+        "fact_id": "auto_tpl_002_spanish_vocals",
+        "category": "language",
+        "claim": "The vocals are in Spanish.",
+        "verification_question": "Are the lyrics sung in Spanish?",
+        "expected_answer": true,
+        "difficulty": "culture_discriminative",
+        "source": "auto:template:spanish_vocals",
+        "grounding": "ground_truth.language"
+      },
+      {
+        "fact_id": "auto_tpl_003_electronic_production",
+        "category": "timbre",
+        "claim": "The production uses electronic drums and synth bass.",
+        "verification_question": "Is the percussion predominantly electronic (drum machine) with a synthesized bass?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:template:electronic_production",
+        "grounding": "tradition=reggaeton"
+      },
+      {
+        "fact_id": "auto_inst_pos_004_dembow_kick",
+        "category": "instrument",
+        "claim": "The instrument 'dembow_kick' is present.",
+        "verification_question": "Is 'dembow kick' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[dembow_kick]"
+      },
+      {
+        "fact_id": "auto_inst_pos_005_clap",
+        "category": "instrument",
+        "claim": "The instrument 'clap' is present.",
+        "verification_question": "Is 'clap' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[clap]"
+      },
+      {
+        "fact_id": "auto_inst_pos_006_synth_bass",
+        "category": "instrument",
+        "claim": "The instrument 'synth_bass' is present.",
+        "verification_question": "Is 'synth bass' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[synth_bass]"
+      },
+      {
+        "fact_id": "auto_inst_neg_007_ghatam",
+        "category": "instrument",
+        "claim": "'ghatam' is NOT present.",
+        "verification_question": "Is a 'ghatam' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~reggaeton"
+      },
+      {
+        "fact_id": "auto_inst_neg_008_mridangam",
+        "category": "instrument",
+        "claim": "'mridangam' is NOT present.",
+        "verification_question": "Is a 'mridangam' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~reggaeton"
+      },
+      {
+        "fact_id": "auto_inst_neg_009_ney",
+        "category": "instrument",
+        "claim": "'ney' is NOT present.",
+        "verification_question": "Is a 'ney' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~reggaeton"
+      }
+    ],
+    "reference_metadata": {
+      "modal": null,
+      "cycle": "dembow",
+      "form": "reggaeton_song",
+      "instruments": [
+        "dembow_kick",
+        "clap",
+        "synth_bass"
+      ]
+    }
+  },
+  {
+    "prompt_id": "western_ctrl_001",
+    "tradition": "western_control",
+    "generation_prompt": "A solo piano sonata in C major in the style of Mozart",
+    "description": "Auto-derived prompt for western_control/None/None",
+    "atomic_facts": [
+      {
+        "fact_id": "auto_inst_pos_000_piano",
+        "category": "instrument",
+        "claim": "The instrument 'piano' is present.",
+        "verification_question": "Is 'piano' audible in the clip?",
+        "expected_answer": true,
+        "difficulty": "must_have",
+        "source": "auto:instrument_present",
+        "grounding": "ground_truth.instruments[piano]"
+      },
+      {
+        "fact_id": "auto_inst_neg_001_ghatam",
+        "category": "instrument",
+        "claim": "'ghatam' is NOT present.",
+        "verification_question": "Is a 'ghatam' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~western_control"
+      },
+      {
+        "fact_id": "auto_inst_neg_002_mridangam",
+        "category": "instrument",
+        "claim": "'mridangam' is NOT present.",
+        "verification_question": "Is a 'mridangam' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~western_control"
+      },
+      {
+        "fact_id": "auto_inst_neg_003_ney",
+        "category": "instrument",
+        "claim": "'ney' is NOT present.",
+        "verification_question": "Is a 'ney' audible in the clip?",
+        "expected_answer": false,
+        "difficulty": "easy_to_get_wrong",
+        "source": "auto:instrument_negative",
+        "grounding": "vocab/instruments.yaml#out_of_culture_for~western_control"
+      }
+    ],
+    "reference_metadata": {
+      "modal": null,
+      "cycle": null,
+      "form": "sonata",
+      "instruments": [
+        "piano"
+      ]
+    }
+  }
+]

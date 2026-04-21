@@ -1,0 +1,53 @@
+- id: modal_scale_positive
+  category: modal_system
+  difficulty: must_have
+  applies_if: "gt.modal_system"
+  claim: "The melody uses the swaras of raga {gt.modal_system.name}."
+  question: "Does the melody follow a scale pattern consistent with raga {gt.modal_system.name}?"
+  expected: true
+  grounding: "ground_truth.modal_system.name"
+
+- id: metric_cycle_positive
+  category: metric_cycle
+  difficulty: must_have
+  applies_if: "gt.metric_cycle and gt.metric_cycle.beats"
+  claim: "The percussion follows a {gt.metric_cycle.beats}-beat tala cycle ({gt.metric_cycle.name})."
+  question: "Does the percussion follow a {gt.metric_cycle.beats}-beat cyclic pattern consistent with {gt.metric_cycle.name} tala?"
+  expected: true
+  grounding: "ground_truth.metric_cycle.name"
+
+- id: tambura_drone
+  category: cultural
+  difficulty: culture_discriminative
+  applies_if: "any(i.canonical == 'tanpura' for i in gt.instruments)"
+  claim: "A continuous tambura/tanpura drone is present."
+  question: "Is a continuous drone (tambura or shruti box) audible in the background?"
+  expected: true
+  grounding: "ground_truth.instruments[tanpura]"
+
+- id: gamaka_ornamentation
+  category: cultural
+  difficulty: culture_discriminative
+  applies_if: "gt.modal_system"
+  claim: "Ornamental pitch oscillations (gamakas) are present in the melody."
+  question: "Does the melody feature ornamental pitch oscillations/slides characteristic of Carnatic music (gamakas)?"
+  expected: true
+  grounding: "tradition=carnatic"
+
+- id: form_label
+  category: form
+  difficulty: must_have
+  applies_if: "gt.form"
+  claim: "The performance is in {gt.form} form."
+  question: "Does the piece have the structural characteristics of a Carnatic {gt.form}?"
+  expected: true
+  grounding: "ground_truth.form"
+
+- id: mishra_chapu_asymmetry
+  category: rhythm
+  difficulty: culture_discriminative
+  applies_if: "gt.metric_cycle and gt.metric_cycle.name in ['mishra_chapu', 'khanda_chapu', 'ata']"
+  claim: "The rhythmic cycle is asymmetric (not 4/4)."
+  question: "Does the rhythmic cycle sound like standard 4/4 Western time?"
+  expected: false
+  grounding: "ground_truth.metric_cycle.name"

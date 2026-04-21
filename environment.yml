@@ -1,0 +1,32 @@
+# Conda env for NEXUS (CUDA 12.1 compatible).
+#   conda env create -f environment.yml
+#   conda activate mhb
+name: mhb
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy>=1.24
+  - pandas>=2.1
+  - matplotlib>=3.8
+  - pyyaml>=6.0
+  - tqdm>=4.66
+  - scipy>=1.11
+  - soundfile>=0.12.1
+  - librosa>=0.10.1
+  - ffmpeg
+  - pytorch>=2.1
+  - pytorch-cuda=12.1
+  - torchaudio>=2.1
+  - pip:
+      - transformers>=4.43
+      - accelerate>=0.27
+      - safetensors>=0.4
+      - google-genai>=1.0.0
+      - datasets>=2.18
+      - pytest>=8.0
+      - pytest-cov>=4.1
+      - -e .

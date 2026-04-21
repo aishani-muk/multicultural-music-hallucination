@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mhb"
+version = "0.2.0"
+description = "Multicultural Music-Hallucination Benchmark: dual-track evaluation of Gemini and Music Flamingo on real multicultural audio + MusicGen outputs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "UMD CMSC848U project"}]
+dependencies = [
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+    "soundfile>=0.12.1",
+    "librosa>=0.10.1",
+    "pandas>=2.1",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+# Minimum to run Gemini verification + scorer + analysis.
+gemini = ["google-genai>=1.0.0"]
+# Heavy: HF audio-LLMs (Music Flamingo / Audio Flamingo 3).
+hf = [
+    "torch>=2.1",
+    "torchaudio>=2.1",
+    "transformers>=4.43",
+    "accelerate>=0.27",
+    "safetensors>=0.4",
+]
+# MusicGen generation track.
+generation = [
+    "torch>=2.1",
+    "torchaudio>=2.1",
+    "transformers>=4.43",
+]
+# CLAP zero-shot acoustic probe.
+clap = ["laion-clap>=1.1.4"]
+# MuChoMusic loader.
+datasets = ["datasets>=2.18"]
+# Dev tooling.
+dev = ["pytest>=8.0", "pytest-cov>=4.1"]
+
+[project.scripts]
+mhb = "mhb.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"mhb.data.vocab" = ["*.yaml"]
+"mhb.data.auto_templates" = ["*.yaml"]
+"mhb.prompts" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --tb=short"

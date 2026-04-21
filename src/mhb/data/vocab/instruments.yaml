@@ -1,0 +1,180 @@
+# Canonical instrument names scoped by tradition.
+# Fields:
+#   aliases: alternate spellings / transliterations
+#   family: string | wind | percussion | voice | keyboard | electronic
+#   traditions: which traditions this instrument is *native* to
+#   out_of_culture_for: traditions where presence would be a hallucination
+
+# ── Indian classical ──
+mridangam:
+  aliases: [mridangam_south, mridanga]
+  family: percussion
+  traditions: [carnatic]
+  out_of_culture_for: [turkish_makam, arab_andalusian, western_control, reggaeton]
+
+tabla:
+  aliases: []
+  family: percussion
+  traditions: [hindustani]
+  out_of_culture_for: [western_control, reggaeton, turkish_makam, arab_andalusian]
+
+ghatam:
+  aliases: []
+  family: percussion
+  traditions: [carnatic]
+  out_of_culture_for: [turkish_makam, arab_andalusian, western_control, reggaeton]
+
+kanjira:
+  aliases: []
+  family: percussion
+  traditions: [carnatic]
+
+tanpura:
+  aliases: [tambura, tamboura, tumbura]
+  family: string
+  traditions: [carnatic, hindustani]
+  out_of_culture_for: [western_control, reggaeton, turkish_makam, arab_andalusian]
+
+sitar:
+  aliases: []
+  family: string
+  traditions: [hindustani]
+  out_of_culture_for: [western_control, reggaeton, turkish_makam, arab_andalusian, carnatic]
+
+sarod:
+  aliases: []
+  family: string
+  traditions: [hindustani]
+
+sarangi:
+  aliases: []
+  family: string
+  traditions: [hindustani]
+
+veena:
+  aliases: [saraswati_veena]
+  family: string
+  traditions: [carnatic]
+
+violin_carnatic:
+  aliases: [carnatic_violin]
+  family: string
+  traditions: [carnatic]
+
+violin_hindustani:
+  aliases: [hindustani_violin]
+  family: string
+  traditions: [hindustani]
+
+bansuri:
+  aliases: [flute_hindustani]
+  family: wind
+  traditions: [hindustani]
+
+flute_carnatic:
+  aliases: [venu, carnatic_flute]
+  family: wind
+  traditions: [carnatic]
+
+harmonium:
+  aliases: []
+  family: keyboard
+  traditions: [hindustani]
+
+# ── Turkish / Arab-Andalusian ──
+ney:
+  aliases: [nay, nai]
+  family: wind
+  traditions: [turkish_makam, arab_andalusian]
+  out_of_culture_for: [western_control, reggaeton, carnatic, hindustani]
+
+kanun:
+  aliases: [qanun, kanoun]
+  family: string
+  traditions: [turkish_makam, arab_andalusian]
+
+oud:
+  aliases: ["ud", "'ud", "oud_arabic"]
+  family: string
+  traditions: [turkish_makam, arab_andalusian]
+
+tanbur:
+  aliases: [tambur_turkish]
+  family: string
+  traditions: [turkish_makam]
+
+kemence:
+  aliases: [kemençe, kemenche]
+  family: string
+  traditions: [turkish_makam]
+
+kudum:
+  aliases: [kudüm]
+  family: percussion
+  traditions: [turkish_makam]
+
+bendir:
+  aliases: []
+  family: percussion
+  traditions: [turkish_makam, arab_andalusian]
+
+rabab:
+  aliases: [rebab, ribab]
+  family: string
+  traditions: [arab_andalusian]
+
+darbuka:
+  aliases: [darabukka, darbuqa]
+  family: percussion
+  traditions: [arab_andalusian, turkish_makam]
+
+tar_percussion:
+  aliases: [tar]
+  family: percussion
+  traditions: [arab_andalusian]
+
+# ── Western / out-of-culture distractors ──
+voice:
+  aliases: [vocal, vocals, singer, singing]
+  family: voice
+  traditions: [carnatic, hindustani, turkish_makam, arab_andalusian, reggaeton, western_control]
+
+piano:
+  aliases: [grand_piano, acoustic_piano]
+  family: keyboard
+  traditions: [western_control]
+  out_of_culture_for: [carnatic, hindustani, turkish_makam, arab_andalusian, reggaeton]
+
+drum_kit:
+  aliases: [drumset, drum_set, drum_kit_rock]
+  family: percussion
+  traditions: [western_control]
+  out_of_culture_for: [carnatic, hindustani, turkish_makam, arab_andalusian]
+
+electric_guitar:
+  aliases: [egtr, electric_gtr]
+  family: string
+  traditions: [western_control]
+  out_of_culture_for: [carnatic, hindustani, turkish_makam, arab_andalusian]
+
+synthesizer:
+  aliases: [synth, synth_pad, synth_lead]
+  family: electronic
+  traditions: [reggaeton, western_control]
+  out_of_culture_for: [carnatic, hindustani, turkish_makam, arab_andalusian]
+
+# ── Reggaeton-native ──
+dembow_kick:
+  aliases: [kick]
+  family: percussion
+  traditions: [reggaeton, western_control]
+
+clap:
+  aliases: [hand_clap, clap_sample]
+  family: percussion
+  traditions: [reggaeton, western_control]
+
+synth_bass:
+  aliases: [sub_bass, reggaeton_bass]
+  family: electronic
+  traditions: [reggaeton, western_control]

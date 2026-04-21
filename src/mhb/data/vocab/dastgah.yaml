@@ -1,0 +1,65 @@
+# Iranian dastgāh-hā (7) and āvāz-hā (5). Skeleton only; radif loader is a placeholder.
+# Fields:
+#   aliases: variants
+#   type: dastgah | avaz
+#   characteristic: short descriptor
+
+shur:
+  aliases: [dastgah_shur]
+  type: dastgah
+  characteristic: "most common dastgāh; neutral second above finalis"
+
+homayun:
+  aliases: [dastgah_homayun]
+  type: dastgah
+  characteristic: "augmented-second signature"
+
+segah:
+  aliases: [dastgah_segah, segah_persian]
+  type: dastgah
+  characteristic: "koron-inflected third; intimate"
+
+chahargah:
+  aliases: [dastgah_chahargah]
+  type: dastgah
+  characteristic: "double augmented-second; heroic"
+
+mahur:
+  aliases: [dastgah_mahur]
+  type: dastgah
+  characteristic: "major-like diatonic"
+
+rast_panjgah:
+  aliases: [dastgah_rast_panjgah, rast-panjgah]
+  type: dastgah
+  characteristic: "related to Turkish rast; major with koron second"
+
+nava:
+  aliases: [dastgah_nava]
+  type: dastgah
+  characteristic: "related to shur; settled mood"
+
+bayat_e_esfahan:
+  aliases: [esfahan, bayat-e-esfahan, bayate_esfahan]
+  type: avaz
+  characteristic: "avaz derived from homayun"
+
+abu_ata:
+  aliases: [abu-ata, abu_ata_persian]
+  type: avaz
+  characteristic: "avaz of shur"
+
+bayat_e_tork:
+  aliases: [bayat-e-tork, bayat_tork]
+  type: avaz
+  characteristic: "avaz of shur"
+
+afshari:
+  aliases: [afshari_persian]
+  type: avaz
+  characteristic: "avaz of shur"
+
+dashti:
+  aliases: [dashti_persian]
+  type: avaz
+  characteristic: "avaz of shur"

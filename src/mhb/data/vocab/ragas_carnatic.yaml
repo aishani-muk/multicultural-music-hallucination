@@ -1,0 +1,71 @@
+# Carnatic ragas. Non-exhaustive; grows from corpus metadata.
+# Fields:
+#   melakarta: parent melakarta number (1..72) for janya ragas; null for sampoorna
+#   aliases: alternate spellings
+#   scale_degrees: Sa Ri Ga Ma Pa Dha Ni with variants (R1/R2/R3, G1/G2/G3, M1/M2, D1/D2/D3, N1/N2/N3)
+#   characteristic: human-readable descriptor
+
+shankarabharanam:
+  aliases: [sankarabharanam, dhira_shankarabharanam]
+  melakarta: 29
+  scale_degrees: "S R2 G3 M1 P D2 N3"
+  characteristic: "equivalent to Western major scale"
+
+kalyani:
+  aliases: [mechakalyani, mecha_kalyani]
+  melakarta: 65
+  scale_degrees: "S R2 G3 M2 P D2 N3"
+  characteristic: "prati madhyama (sharp fourth); one of the most popular ragas"
+
+kharaharapriya:
+  aliases: []
+  melakarta: 22
+  scale_degrees: "S R2 G2 M1 P D2 N2"
+  characteristic: "equivalent to Western Dorian mode"
+
+todi:
+  aliases: [hanumatodi, hanuma_todi]
+  melakarta: 8
+  scale_degrees: "S R1 G2 M1 P D1 N2"
+  characteristic: "all komal except Ma; intense bhakti-leaning"
+
+natabhairavi:
+  aliases: []
+  melakarta: 20
+  scale_degrees: "S R2 G2 M1 P D1 N2"
+  characteristic: "equivalent to Western natural minor"
+
+hamsadhwani:
+  aliases: [hansadhwani]
+  melakarta: 29
+  parent_raga: shankarabharanam
+  scale_degrees: "S R2 G3 P N3"
+  characteristic: "pentatonic, no M/D; bright Ganesha raga"
+
+mohanam:
+  aliases: [mohana]
+  melakarta: 28
+  parent_raga: harikambhoji
+  scale_degrees: "S R2 G3 P D2"
+  characteristic: "pentatonic major; equivalent to Indian 'bhup'"
+
+bhairavi_carnatic:
+  aliases: [bhairavi]
+  melakarta: 20
+  parent_raga: natabhairavi
+  scale_degrees: "S R2 G2 M1 P D2 N2 ; S N2 D1 P M1 G2 R2"
+  characteristic: "asymmetric arohanam/avarohanam; emotive"
+
+kambhoji:
+  aliases: [kamboji]
+  melakarta: 28
+  parent_raga: harikambhoji
+  scale_degrees: "S R2 G3 M1 P D2 ; S N2 D2 P M1 G3 R2"
+  characteristic: "expansive bhava raga, no Ni in ascent"
+
+abhogi:
+  aliases: []
+  melakarta: 22
+  parent_raga: kharaharapriya
+  scale_degrees: "S R2 G2 M1 D2"
+  characteristic: "pentatonic, no P/N; meditative"

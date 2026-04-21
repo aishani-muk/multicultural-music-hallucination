@@ -1,0 +1,28 @@
+# Iranian radif: skeleton templates. Used only when a radif corpus is wired in.
+
+- id: dastgah_positive
+  category: modal_system
+  difficulty: must_have
+  applies_if: "gt.modal_system"
+  claim: "The melody is in dastg\u0101h {gt.modal_system.name}."
+  question: "Does the melody follow intervals consistent with dastg\u0101h {gt.modal_system.name}?"
+  expected: true
+  grounding: "ground_truth.modal_system.name"
+
+- id: free_rhythm_avaz
+  category: structure
+  difficulty: culture_discriminative
+  applies_if: "gt.metric_cycle is None"
+  claim: "The performance is in free rhythm (\u0101v\u0101z)."
+  question: "Is the performance in free rhythm without a fixed meter?"
+  expected: true
+  grounding: "ground_truth.metric_cycle"
+
+- id: microtonal_persian
+  category: tuning
+  difficulty: culture_discriminative
+  applies_if: "True"
+  claim: "Microtonal (koron/sori) intervals are present."
+  question: "Does the melody include pitches that fall between Western equal-tempered semitones?"
+  expected: true
+  grounding: "tradition=radif"

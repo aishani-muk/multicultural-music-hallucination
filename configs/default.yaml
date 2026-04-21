@@ -1,0 +1,50 @@
+# Default config — small, fast, safe. Good for a first run or a dry test.
+# Paths are relative to the repo root (pipeline/) unless absolute.
+
+seed: 848
+
+paths:
+  prompts: src/mhb/prompts/seed_prompts.json
+  curated: outputs/curated
+  generated_audio: outputs/generated_audio
+  verification_results: outputs/verification_results
+  final_scores: outputs/scores
+  figures: outputs/figures
+
+# Which verifiers to run by default when `--verifier` is omitted.
+verifiers:
+  - gemini
+
+# ── Verifier: Gemini ────────────────────────────────────────────────
+gemini:
+  model: gemini-2.5-flash   # upgrade to gemini-2.5-pro when you want higher quality
+  requests_per_minute: 15
+  max_retries: 3
+  temperature: 0.0
+  max_output_tokens: 512
+  # GOOGLE_API_KEY is picked up from the environment.
+
+# ── Verifier: Music Flamingo ────────────────────────────────────────
+music_flamingo:
+  model_id: nvidia/audio-flamingo-3
+  device: cuda
+  torch_dtype: bfloat16
+  max_new_tokens: 256
+  # HF_TOKEN env var required; must have accepted the model license on HF.
+
+# ── Audio generation (MusicGen) ─────────────────────────────────────
+generation:
+  model: facebook/musicgen-small   # small for default; swap to -large on A100
+  duration_sec: 10
+  sampling_rate: 32000
+  guidance_scale: 3.0
+  max_new_tokens: 512
+  batch_size: 2
+  device: cuda
+  torch_dtype: float16
+
+# ── Evaluation ──────────────────────────────────────────────────────
+evaluation:
+  bootstrap_n: 1000
+  alpha: 0.05
+  binary_threshold: 0.5

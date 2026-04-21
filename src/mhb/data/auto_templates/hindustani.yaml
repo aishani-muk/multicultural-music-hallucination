@@ -1,0 +1,57 @@
+# Hindustani fact templates.
+# Each entry expands to one atomic fact when its 'applies_if' is satisfied.
+# Field semantics are documented in src/mhb/data/auto_templates/__init__.py.
+
+- id: modal_scale_positive
+  category: modal_system
+  difficulty: must_have
+  applies_if: "gt.modal_system"
+  claim: "The melody uses the scale of raga {gt.modal_system.name}."
+  question: "Does the melody follow a scale pattern consistent with raga {gt.modal_system.name}?"
+  expected: true
+  grounding: "ground_truth.modal_system.name"
+
+- id: metric_cycle_positive
+  category: metric_cycle
+  difficulty: must_have
+  applies_if: "gt.metric_cycle and gt.metric_cycle.beats"
+  claim: "The percussion follows a {gt.metric_cycle.beats}-beat cyclic pattern ({gt.metric_cycle.name})."
+  question: "Does the percussion follow a {gt.metric_cycle.beats}-beat cyclic pattern consistent with {gt.metric_cycle.name}?"
+  expected: true
+  grounding: "ground_truth.metric_cycle.name"
+
+- id: tanpura_drone
+  category: cultural
+  difficulty: culture_discriminative
+  applies_if: "any(i.canonical == 'tanpura' for i in gt.instruments)"
+  claim: "A continuous tanpura drone is present."
+  question: "Is a continuous, unbroken tanpura-like drone audible in the background?"
+  expected: true
+  grounding: "ground_truth.instruments[tanpura]"
+
+- id: meend_ornamentation
+  category: cultural
+  difficulty: culture_discriminative
+  applies_if: "any(i.canonical in ['sitar', 'sarangi', 'sarod', 'bansuri'] for i in gt.instruments)"
+  claim: "Characteristic pitch-bending (meend) is present on the lead instrument."
+  question: "Does the lead melodic instrument use long gliding pitch bends (meend) between notes?"
+  expected: true
+  grounding: "ground_truth.instruments"
+
+- id: form_label
+  category: form
+  difficulty: must_have
+  applies_if: "gt.form"
+  claim: "The performance is in {gt.form} form."
+  question: "Does the piece have the structural characteristics of Hindustani {gt.form}?"
+  expected: true
+  grounding: "ground_truth.form"
+
+- id: asymmetric_cycle_when_rupak
+  category: rhythm
+  difficulty: culture_discriminative
+  applies_if: "gt.metric_cycle and gt.metric_cycle.name in ['rupak', 'jhaptaal', 'dhamar']"
+  claim: "The rhythmic cycle is NOT standard 4/4."
+  question: "Does the rhythmic cycle sound like standard 4/4 Western time?"
+  expected: false
+  grounding: "ground_truth.metric_cycle.name"

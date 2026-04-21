@@ -1,0 +1,18 @@
+# Reggaeton-specific structural ground truth.
+# Single-entry vocab: dembow is THE defining metric cycle.
+
+dembow:
+  aliases: [dem_bow, dembow_riddim]
+  beats: 8   # per 2-bar pattern in 4/4 (kick on 1, snare on "and" of 2, etc.)
+  accent_pattern: "3+3+2 (boom-ch-boom-chick)"
+  characteristic: "staccato snare/clap on off-beats; driving kick on downbeats"
+
+tempo_band:
+  bpm_min: 88
+  bpm_max: 105
+  characteristic: "characteristic reggaeton tempo range"
+
+language:
+  canonical: es
+  aliases: [spanish, spa, castellano]
+  characteristic: "Spanish-language vocals are the norm"

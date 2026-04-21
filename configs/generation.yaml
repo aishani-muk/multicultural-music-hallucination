@@ -1,0 +1,40 @@
+# Generation track: generate audio with MusicGen, then run verifiers
+# (Gemini + optionally Music Flamingo) over the generated clips against
+# the auto-derived atomic facts in seed_prompts.json.
+
+seed: 848
+
+paths:
+  prompts: src/mhb/prompts/seed_prompts.json
+  generated_audio: outputs/generated_audio
+  verification_results: outputs/verification_results
+  final_scores: outputs/scores
+  figures: outputs/figures
+
+verifiers:
+  - gemini
+  - music_flamingo
+
+gemini:
+  model: gemini-2.5-flash
+  requests_per_minute: 15
+  max_retries: 3
+  temperature: 0.0
+
+music_flamingo:
+  model_id: nvidia/audio-flamingo-3
+  device: cuda
+  torch_dtype: bfloat16
+
+generation:
+  model: facebook/musicgen-large
+  duration_sec: 10
+  guidance_scale: 3.0
+  max_new_tokens: 1024
+  batch_size: 4
+  device: cuda
+  torch_dtype: float16
+
+evaluation:
+  bootstrap_n: 1000
+  alpha: 0.05

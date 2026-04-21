@@ -1,0 +1,44 @@
+- id: modal_tab3_positive
+  category: modal_system
+  difficulty: must_have
+  applies_if: "gt.modal_system"
+  claim: "The mode is {gt.modal_system.name} (Moroccan Andalusian tab\u02bf)."
+  question: "Does the melody follow a scale pattern consistent with Arab-Andalusian tab\u02bf {gt.modal_system.name}?"
+  expected: true
+  grounding: "ground_truth.modal_system.name"
+
+- id: mizan_positive
+  category: metric_cycle
+  difficulty: must_have
+  applies_if: "gt.metric_cycle and gt.metric_cycle.beats"
+  claim: "The percussion follows miz\u0101n {gt.metric_cycle.name} ({gt.metric_cycle.beats} beats)."
+  question: "Does the percussion follow a {gt.metric_cycle.beats}-beat cyclic pattern consistent with mizan {gt.metric_cycle.name}?"
+  expected: true
+  grounding: "ground_truth.metric_cycle.name"
+
+- id: heterophonic_texture
+  category: structure
+  difficulty: culture_discriminative
+  applies_if: "len(gt.instruments) >= 2"
+  claim: "The ensemble plays in heterophonic unison, not block harmony."
+  question: "Does the ensemble play melodic lines in unison/heterophony rather than Western block harmony?"
+  expected: true
+  grounding: "tradition=arab_andalusian"
+
+- id: non_western_scale
+  category: scale
+  difficulty: culture_discriminative
+  applies_if: "gt.modal_system"
+  claim: "The scale is NOT a Western major/minor scale."
+  question: "Does the melody follow a standard Western major or minor scale?"
+  expected: false
+  grounding: "tradition=arab_andalusian"
+
+- id: oud_or_rabab_lead
+  category: instrument
+  difficulty: culture_discriminative
+  applies_if: "any(i.canonical in ['oud', 'rabab'] for i in gt.instruments)"
+  claim: "A plucked oud or bowed rabab leads the ensemble."
+  question: "Is an oud (short-necked fretless lute) or rabab (bowed string) audible as a lead?"
+  expected: true
+  grounding: "ground_truth.instruments"

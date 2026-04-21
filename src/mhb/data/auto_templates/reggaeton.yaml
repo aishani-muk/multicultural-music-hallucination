@@ -1,0 +1,35 @@
+- id: dembow_cycle
+  category: metric_cycle
+  difficulty: culture_discriminative
+  applies_if: "True"
+  claim: "The rhythm is a dembow pattern (3+3+2 boom-ch-boom-chick)."
+  question: "Does the percussion follow a dembow pattern (staccato snare/clap on off-beats over a steady kick)?"
+  expected: true
+  grounding: "tradition=reggaeton"
+
+- id: tempo_band
+  category: tempo
+  difficulty: must_have
+  applies_if: "gt.tempo_bpm and 85 <= gt.tempo_bpm <= 108"
+  claim: "The tempo is in the reggaeton band (~90\u2013105 BPM)."
+  question: "Is the tempo in the 90\u2013105 BPM reggaeton range?"
+  expected: true
+  grounding: "ground_truth.tempo_bpm"
+
+- id: spanish_vocals
+  category: language
+  difficulty: culture_discriminative
+  applies_if: "gt.language == 'es'"
+  claim: "The vocals are in Spanish."
+  question: "Are the lyrics sung in Spanish?"
+  expected: true
+  grounding: "ground_truth.language"
+
+- id: electronic_production
+  category: timbre
+  difficulty: must_have
+  applies_if: "True"
+  claim: "The production uses electronic drums and synth bass."
+  question: "Is the percussion predominantly electronic (drum machine) with a synthesized bass?"
+  expected: true
+  grounding: "tradition=reggaeton"

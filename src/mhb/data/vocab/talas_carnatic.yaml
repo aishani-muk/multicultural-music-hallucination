@@ -1,0 +1,62 @@
+# Carnatic talas (sulaadi sapta and common variants).
+# Fields:
+#   beats: total matras per avarta
+#   angas: laghu + drutam + anudrutam pattern
+#   jati: jaati (tisra/chatusra/khanda/misra/sankeerna) -- default for each family
+#   aliases: alternate spellings
+
+adi:
+  aliases: [aadi, aadital, adi_talam]
+  beats: 8
+  angas: "laghu(4) + drutam(2) + drutam(2)"
+  jati: chatusra
+  usage: "most common tala for kritis"
+
+rupaka:
+  aliases: [rupakam, rupaka_talam]
+  beats: 6
+  angas: "drutam(2) + laghu(4)"
+  jati: chatusra
+  usage: "medium-tempo kritis"
+
+mishra_chapu:
+  aliases: [misra_chapu, mishra_chaapu, khanda_chapu_mis]
+  beats: 7
+  angas: "3+4 (asymmetric)"
+  jati: mishra
+  usage: "light devotional and fast kritis"
+
+khanda_chapu:
+  aliases: [khandachapu]
+  beats: 5
+  angas: "2+3"
+  jati: khanda
+  usage: "brisk kritis"
+
+triputa:
+  aliases: [triputa_talam]
+  beats: 7
+  angas: "laghu(3) + drutam(2) + drutam(2)"
+  jati: tisra
+  usage: "ata tala alternative"
+
+ata:
+  aliases: [ata_talam, aatta]
+  beats: 14
+  angas: "laghu(5) + laghu(5) + drutam(2) + drutam(2)"
+  jati: khanda
+  usage: "varnams"
+
+jhampa:
+  aliases: [jhampe, jhampa_talam]
+  beats: 10
+  angas: "laghu(7) + anudrutam(1) + drutam(2)"
+  jati: mishra
+  usage: "kritis"
+
+dhruva:
+  aliases: [dhruva_talam]
+  beats: 14
+  angas: "laghu(4) + drutam(2) + laghu(4) + laghu(4)"
+  jati: chatusra
+  usage: "rare"

@@ -1,0 +1,17 @@
+- id: western_key_positive
+  category: scale
+  difficulty: must_have
+  applies_if: "gt.modal_system"
+  claim: "The piece is in {gt.modal_system.name}."
+  question: "Does the piece sound like it is in {gt.modal_system.name}?"
+  expected: true
+  grounding: "ground_truth.modal_system.name"
+
+- id: common_time
+  category: rhythm
+  difficulty: must_have
+  applies_if: "gt.metric_cycle and gt.metric_cycle.name == 'common_time'"
+  claim: "The piece is in 4/4 common time."
+  question: "Is the piece in standard 4/4 common time?"
+  expected: true
+  grounding: "ground_truth.metric_cycle.name"

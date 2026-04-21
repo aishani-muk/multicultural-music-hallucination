@@ -1,0 +1,60 @@
+# Hindustani talas.
+# Fields:
+#   beats: total matras per cycle
+#   division: vibhag structure (e.g., 4+4+4+4 for teental)
+#   aliases: alternate spellings
+#   usage: common contexts
+
+teental:
+  aliases: [tintal, trital, tintaal]
+  beats: 16
+  division: "4+4+4+4"
+  usage: "most common tala for khayal and instrumental"
+
+jhaptaal:
+  aliases: [jhaptal, jhap_tal]
+  beats: 10
+  division: "2+3+2+3"
+  usage: "medium-tempo khayal and instrumental"
+
+ektaal:
+  aliases: [ektal, ek_tal]
+  beats: 12
+  division: "2+2+2+2+2+2"
+  usage: "slow vilambit khayal"
+
+rupak:
+  aliases: [rupaktal, rupak_taal]
+  beats: 7
+  division: "3+2+2"
+  usage: "begins on khali; asymmetric"
+
+dhamar:
+  aliases: [dhamar_tal]
+  beats: 14
+  division: "5+2+3+4"
+  usage: "dhrupad and dhamar; Holi-associated"
+
+chautal:
+  aliases: [chartal, chau_tal]
+  beats: 12
+  division: "2+2+2+2+2+2"
+  usage: "dhrupad"
+
+tilwada:
+  aliases: [tilwaara, tilwara]
+  beats: 16
+  division: "4+4+4+4"
+  usage: "slow khayal, similar to teental but different bols"
+
+keherwa:
+  aliases: [kaharva, kaherwa]
+  beats: 8
+  division: "4+4"
+  usage: "light classical and folk"
+
+dadra:
+  aliases: []
+  beats: 6
+  division: "3+3"
+  usage: "thumri and light classical"

@@ -1,0 +1,40 @@
+# Moroccan Andalusian ṭubū' (modes). Selected canonical set.
+# Fields:
+#   nuba: associated nuba (of 11)
+#   characteristic: descriptor
+#   aliases
+
+rasd_al_dhil:
+  aliases: [rasd_eddil, rasd_addhil]
+  nuba: rasd_al_dhil
+  characteristic: "minor-leaning mode used in the nuba of the same name"
+
+isbihan:
+  aliases: [al-isbihan, asbahan]
+  nuba: isbihan
+  characteristic: "morning/dawn mode"
+
+hijaz_mashriqi:
+  aliases: [hijaz_al_mashriqi]
+  nuba: hijaz_mashriqi
+  characteristic: "augmented-second signature, eastern influence"
+
+hijaz_al_kabir:
+  aliases: [hijaz_kbir, hijaz_kabir]
+  nuba: hijaz_kabir
+  characteristic: "major tab\u02bf with distinct finalis"
+
+rasd:
+  aliases: []
+  nuba: rasd
+  characteristic: "plagal, meditative"
+
+iraq_al_ajam:
+  aliases: [iraq_ajam, iraq-e-ajam]
+  nuba: iraq_al_ajam
+  characteristic: "major-like"
+
+gharibat_al_husayn:
+  aliases: [gharibat_al-husayn, gharibat_hussein]
+  nuba: gharibat_al_husayn
+  characteristic: "night raga-equivalent; expressive"

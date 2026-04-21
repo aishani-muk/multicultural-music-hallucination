@@ -1,0 +1,55 @@
+# Turkish usul (metric cycles).
+# Fields:
+#   beats: total zamans per cycle
+#   accent_pattern: grouping pattern (subdivisions)
+#   category: kucuk (short) | buyuk (long)
+#   aliases
+
+aksak:
+  aliases: [aksak_usul]
+  beats: 9
+  accent_pattern: "2+2+2+3"
+  category: kucuk
+  characteristic: "asymmetric limping 9/8"
+
+duyek:
+  aliases: [düyek]
+  beats: 8
+  accent_pattern: "3+2+3"
+  category: kucuk
+
+sofyan:
+  aliases: [sofyan_usul]
+  beats: 4
+  accent_pattern: "2+2"
+  category: kucuk
+
+semai:
+  aliases: [sem\u00e2\u00ee]
+  beats: 3
+  accent_pattern: "1+1+1"
+  category: kucuk
+
+turkaksagi:
+  aliases: [turk_aksagi, turk_aksak]
+  beats: 5
+  accent_pattern: "2+3"
+  category: kucuk
+
+evfer:
+  aliases: []
+  beats: 9
+  accent_pattern: "2+2+2+3 (variant)"
+  category: kucuk
+
+devr_i_hindi:
+  aliases: [devri_hindi, devr-i_hindi]
+  beats: 7
+  accent_pattern: "3+2+2"
+  category: kucuk
+
+devrikebir:
+  aliases: [devri_kebir, devr-i_kebir]
+  beats: 28
+  accent_pattern: "long cycle"
+  category: buyuk

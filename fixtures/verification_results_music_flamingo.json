@@ -1,0 +1,30 @@
+[
+  {
+    "clip_id": "fixture_hindustani_0001_000000_000030",
+    "tradition": "hindustani",
+    "audio_path": "fixtures/audio/tone_440hz_2s.wav",
+    "verifier": "music_flamingo/nvidia/audio-flamingo-3",
+    "source": "clip",
+    "fact_results": [
+      {"fact_id": "f01", "category": "modal_system", "claim": "The melody uses raga yaman", "verification_question": "Does the melody follow raga yaman?", "expected_answer": true, "difficulty": "must_have", "model_answer": true, "confidence": 0.82, "evidence": "Yaman-consistent scale.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 3.2},
+      {"fact_id": "f02", "category": "metric_cycle", "claim": "16-beat teental", "verification_question": "Does the percussion follow a 16-beat cyclic pattern?", "expected_answer": true, "difficulty": "must_have", "model_answer": true, "confidence": 0.75, "evidence": "Audible 16-beat cycle.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 3.1},
+      {"fact_id": "f03", "category": "instrument", "claim": "tabla is present", "verification_question": "Is tabla audible?", "expected_answer": true, "difficulty": "must_have", "model_answer": true, "confidence": 0.93, "evidence": "Tabla strokes audible.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 2.9},
+      {"fact_id": "f04", "category": "instrument", "claim": "drum kit is NOT present", "verification_question": "Is a Western drum kit audible?", "expected_answer": false, "difficulty": "easy_to_get_wrong", "model_answer": true, "confidence": 0.6, "evidence": "Claims a drum-kit; likely confusing tabla for drums.", "correct": false, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 2.8},
+      {"fact_id": "f05", "category": "cultural", "claim": "tanpura drone", "verification_question": "Is a continuous tanpura drone audible?", "expected_answer": true, "difficulty": "culture_discriminative", "model_answer": true, "confidence": 0.8, "evidence": "Tanpura drone present.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 3.0}
+    ]
+  },
+  {
+    "clip_id": "fixture_turkish_0001_000000_000030",
+    "tradition": "turkish_makam",
+    "audio_path": "fixtures/audio/tone_440hz_2s.wav",
+    "verifier": "music_flamingo/nvidia/audio-flamingo-3",
+    "source": "clip",
+    "fact_results": [
+      {"fact_id": "t01", "category": "modal_system", "claim": "makam hicaz", "verification_question": "Is the melody in makam hicaz?", "expected_answer": true, "difficulty": "must_have", "model_answer": true, "confidence": 0.78, "evidence": "Augmented-second signature.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 3.0},
+      {"fact_id": "t02", "category": "metric_cycle", "claim": "9-beat aksak", "verification_question": "Is the rhythmic cycle a 9-beat aksak?", "expected_answer": true, "difficulty": "must_have", "model_answer": true, "confidence": 0.7, "evidence": "Asymmetric cycle.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 3.1},
+      {"fact_id": "t03", "category": "instrument", "claim": "ney is present", "verification_question": "Is a ney audible?", "expected_answer": true, "difficulty": "must_have", "model_answer": true, "confidence": 0.9, "evidence": "Breathy reed flute.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 2.9},
+      {"fact_id": "t04", "category": "tuning", "claim": "microtonal intervals present", "verification_question": "Are microtonal intervals present?", "expected_answer": true, "difficulty": "culture_discriminative", "model_answer": true, "confidence": 0.72, "evidence": "Non-12-TET inflections.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 3.0},
+      {"fact_id": "t05", "category": "instrument", "claim": "drum kit NOT present", "verification_question": "Is a Western drum kit audible?", "expected_answer": false, "difficulty": "easy_to_get_wrong", "model_answer": false, "confidence": 0.95, "evidence": "No drum kit.", "correct": true, "verifier": "music_flamingo/nvidia/audio-flamingo-3", "latency_sec": 2.7}
+    ]
+  }
+]

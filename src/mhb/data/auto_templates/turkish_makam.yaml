@@ -1,0 +1,44 @@
+- id: modal_makam_positive
+  category: modal_system
+  difficulty: must_have
+  applies_if: "gt.modal_system"
+  claim: "The melody uses intervals of makam {gt.modal_system.name}."
+  question: "Does the melody use intervals consistent with makam {gt.modal_system.name}?"
+  expected: true
+  grounding: "ground_truth.modal_system.name"
+
+- id: usul_positive
+  category: metric_cycle
+  difficulty: must_have
+  applies_if: "gt.metric_cycle and gt.metric_cycle.beats"
+  claim: "The percussion follows usul {gt.metric_cycle.name} ({gt.metric_cycle.beats} beats)."
+  question: "Does the percussion follow a {gt.metric_cycle.beats}-beat cyclic pattern consistent with usul {gt.metric_cycle.name}?"
+  expected: true
+  grounding: "ground_truth.metric_cycle.name"
+
+- id: taksim_freerhythm
+  category: structure
+  difficulty: culture_discriminative
+  applies_if: "gt.form == 'taksim' or (gt.metric_cycle is None)"
+  claim: "The performance is in free rhythm (taksim)."
+  question: "Is the performance in free rhythm without a fixed meter?"
+  expected: true
+  grounding: "ground_truth.form or (no metric cycle)"
+
+- id: microtonal_intervals
+  category: tuning
+  difficulty: culture_discriminative
+  applies_if: "gt.modal_system"
+  claim: "Microtonal intervals (not reducible to 12-TET) are present."
+  question: "Does the melody include pitches that fall between the keys of a standard Western piano (microtonal intervals)?"
+  expected: true
+  grounding: "tradition=turkish_makam"
+
+- id: aksak_asymmetry
+  category: rhythm
+  difficulty: culture_discriminative
+  applies_if: "gt.metric_cycle and gt.metric_cycle.name in ['aksak', 'devr_i_hindi', 'turkaksagi']"
+  claim: "The rhythmic cycle is asymmetric (not 4/4)."
+  question: "Does the rhythmic pattern have an asymmetric, limping quality (not standard 4/4)?"
+  expected: true
+  grounding: "ground_truth.metric_cycle.name"
