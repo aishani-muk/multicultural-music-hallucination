@@ -46,12 +46,14 @@ def generate_batch(
     inputs = processor(text=prompts, padding=True, return_tensors="pt").to(device)
     tokens_per_sec = 50
     n_tokens = min(max_new_tokens, int(duration_sec * tokens_per_sec))
-    generator = torch.Generator(device=device).manual_seed(int(seed))
+    # Seed globally — newer transformers versions don't accept `generator` kwarg
+    torch.manual_seed(int(seed))
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(int(seed))
     with torch.no_grad():
         audio = model.generate(
             **inputs, max_new_tokens=n_tokens,
             guidance_scale=guidance_scale, do_sample=True,
-            generator=generator,
         )
     sr = model.config.audio_encoder.sampling_rate
     return [(audio[i, 0].detach().cpu().float().numpy(), sr)

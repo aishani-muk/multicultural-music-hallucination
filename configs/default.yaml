@@ -26,11 +26,20 @@ gemini:
 
 # ── Verifier: Music Flamingo ────────────────────────────────────────
 music_flamingo:
-  model_id: nvidia/audio-flamingo-3
+  model_id: nvidia/audio-flamingo-3-hf
   device: cuda
   torch_dtype: bfloat16
   max_new_tokens: 256
   # HF_TOKEN env var required; must have accepted the model license on HF.
+
+# ── Verifier: OpenAI (GPT-4o) ─────────────────────────────────────
+openai:
+  model: gpt-4o-audio-preview
+  requests_per_minute: 30
+  max_retries: 3
+  temperature: 0.0
+  max_output_tokens: 512
+  # OPENAI_API_KEY is picked up from the environment.
 
 # ── Audio generation (MusicGen) ─────────────────────────────────────
 generation:
@@ -42,6 +51,22 @@ generation:
   batch_size: 2
   device: cuda
   torch_dtype: float16
+
+# ── Audio generation (Stable Audio Open) ──────────────────────────
+stable_audio_generation:
+  duration_sec: 10
+  num_inference_steps: 100
+  guidance_scale: 7.0
+  device: cuda
+  torch_dtype: float16
+
+# ── Audio generation (ACE-Step 1.5) ───────────────────────────────
+acestep_generation:
+  duration_sec: 30
+  inference_steps: 8
+  guidance_scale: 7.0
+  device: cuda
+  # pip install git+https://github.com/ace-step/ACE-Step-1.5.git
 
 # ── Evaluation ──────────────────────────────────────────────────────
 evaluation:

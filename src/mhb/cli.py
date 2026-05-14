@@ -89,22 +89,51 @@ def _cmd_data_splits(args):
 
 
 def _cmd_generate(args):
-    from .generate.musicgen import run_generation
     cfg = _load_config(args.config)
     gen = cfg.get("generation", {})
+    model_name = args.model or gen.get("model", "facebook/musicgen-small")
     out = Path(args.out or cfg.get("paths", {}).get("generated_audio", "outputs/generated_audio"))
-    run_generation(
-        prompts_path=args.prompts or cfg["paths"]["prompts"],
-        output_dir=out,
-        model_id=gen.get("model", "facebook/musicgen-large"),
-        duration_sec=gen.get("duration_sec", 10.0),
-        guidance_scale=gen.get("guidance_scale", 3.0),
-        max_new_tokens=gen.get("max_new_tokens", 1024),
-        batch_size=gen.get("batch_size", 4),
-        device=gen.get("device", "cuda"),
-        torch_dtype=gen.get("torch_dtype", "float16"),
-        seed=cfg.get("seed", 848),
-    )
+
+    if "acestep" in model_name.lower() or "ace-step" in model_name.lower():
+        from .generate.acestep import run_generation as run_acestep
+        acestep_cfg = cfg.get("acestep_generation", gen)
+        run_acestep(
+            prompts_path=args.prompts or cfg["paths"]["prompts"],
+            output_dir=out,
+            duration_sec=acestep_cfg.get("duration_sec", 30.0),
+            inference_steps=acestep_cfg.get("inference_steps", 8),
+            guidance_scale=acestep_cfg.get("guidance_scale", 7.0),
+            device=acestep_cfg.get("device", "cuda"),
+            seed=cfg.get("seed", 848),
+        )
+    elif "stable-audio" in model_name.lower() or "stable_audio" in model_name.lower():
+        from .generate.stable_audio import run_generation as run_stable
+        sa_cfg = cfg.get("stable_audio_generation", gen)
+        run_stable(
+            prompts_path=args.prompts or cfg["paths"]["prompts"],
+            output_dir=out,
+            model_id=model_name,
+            duration_sec=sa_cfg.get("duration_sec", 10.0),
+            num_inference_steps=sa_cfg.get("num_inference_steps", 100),
+            guidance_scale=sa_cfg.get("guidance_scale", 7.0),
+            device=sa_cfg.get("device", "cuda"),
+            torch_dtype=sa_cfg.get("torch_dtype", "float16"),
+            seed=cfg.get("seed", 848),
+        )
+    else:
+        from .generate.musicgen import run_generation
+        run_generation(
+            prompts_path=args.prompts or cfg["paths"]["prompts"],
+            output_dir=out,
+            model_id=model_name,
+            duration_sec=gen.get("duration_sec", 10.0),
+            guidance_scale=gen.get("guidance_scale", 3.0),
+            max_new_tokens=gen.get("max_new_tokens", 1024),
+            batch_size=gen.get("batch_size", 4),
+            device=gen.get("device", "cuda"),
+            torch_dtype=gen.get("torch_dtype", "float16"),
+            seed=cfg.get("seed", 848),
+        )
 
 
 def _build_verifier(kind: str, cfg: dict):
@@ -123,12 +152,23 @@ def _build_verifier(kind: str, cfg: dict):
         from .verify.music_flamingo import MusicFlamingoVerifier
         mf = cfg.get("music_flamingo", {})
         return MusicFlamingoVerifier(
-            model_id=mf.get("model_id", "nvidia/audio-flamingo-3"),
+            model_id=mf.get("model_id", "nvidia/audio-flamingo-3-hf"),
             device=mf.get("device", "cuda"),
             torch_dtype=mf.get("torch_dtype", "bfloat16"),
             max_new_tokens=mf.get("max_new_tokens", 256),
         )
-    raise ValueError(f"Unknown verifier kind: {kind}. Use gemini|music_flamingo.")
+    if kind == "openai":
+        from .verify.openai import OpenAIVerifier
+        o = cfg.get("openai", {})
+        return OpenAIVerifier(
+            model=o.get("model", "gpt-4o-audio-preview"),
+            api_key=None,
+            rpm_limit=o.get("requests_per_minute", 30),
+            max_retries=o.get("max_retries", 3),
+            temperature=o.get("temperature", 0.0),
+            max_output_tokens=o.get("max_output_tokens", 512),
+        )
+    raise ValueError(f"Unknown verifier kind: {kind}. Use gemini|music_flamingo|openai.")
 
 
 def _cmd_verify(args):
@@ -305,8 +345,10 @@ def build_parser() -> argparse.ArgumentParser:
     ds.set_defaults(func=_cmd_data_splits)
 
     # generate
-    g = sub.add_parser("generate", help="Generate audio with MusicGen")
+    g = sub.add_parser("generate", help="Generate audio with MusicGen or ACE-Step")
     g.add_argument("--config", required=True)
+    g.add_argument("--model", default=None,
+                   help="Model name (e.g. facebook/musicgen-small, ACE-Step/Ace-Step1.5)")
     g.add_argument("--prompts", default=None)
     g.add_argument("--out", default=None)
     g.set_defaults(func=_cmd_generate)

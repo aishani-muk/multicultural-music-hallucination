@@ -1,13 +1,12 @@
-"""NVIDIA Music Flamingo verifier (HuggingFace).
+"""NVIDIA Audio Flamingo 3 verifier (HuggingFace).
 
-Music Flamingo (https://huggingface.co/nvidia/audio-flamingo-3 and the
-music-specialized variant) uses a chat-template interface that takes an
-audio array + a text prompt. The exact HF repo id may shift as NVIDIA
-rotates releases; we expose `model_id` as a parameter.
+Supports two HF checkpoint formats:
+  - nvidia/audio-flamingo-3-hf  (native HF, needs transformers >= 4.52)
+  - nvidia/audio-flamingo-3     (trust_remote_code, works on older transformers)
 
 This loader will raise loudly if it cannot load the model — we explicitly
 do NOT silently fall back to another verifier, because doing so makes the
-Gemini-vs-Music-Flamingo comparison meaningless.
+cross-verifier comparison meaningless.
 """
 
 from __future__ import annotations
@@ -26,16 +25,41 @@ from .base import (
 log = logging.getLogger("mhb.verify.music_flamingo")
 
 
-DEFAULT_MODEL_ID = "nvidia/audio-flamingo-3"   # music-capable; swap as NVIDIA publishes
+DEFAULT_MODEL_ID = "nvidia/audio-flamingo-3-hf"
 ALTERNATE_MODEL_IDS = [
-    "nvidia/music-flamingo-hf",
-    "nvidia/music-flamingo",
+    "nvidia/audio-flamingo-3-hf",
     "nvidia/audio-flamingo-3",
 ]
 
 
+def _load_model_and_processor(model_id: str, dtype, device: str, hf_token: Optional[str]):
+    """Try native HF class first, fall back to Auto* with trust_remote_code."""
+    # Attempt 1: native AudioFlamingo3 class (transformers >= 4.52)
+    try:
+        from transformers import AudioFlamingo3ForConditionalGeneration, AutoProcessor
+        log.info("Using native AudioFlamingo3ForConditionalGeneration")
+        processor = AutoProcessor.from_pretrained(model_id, token=hf_token)
+        model = AudioFlamingo3ForConditionalGeneration.from_pretrained(
+            model_id, torch_dtype=dtype, device_map=device, token=hf_token,
+        )
+        return model, processor
+    except (ImportError, Exception) as e:
+        log.info("Native class not available (%s), trying trust_remote_code", e)
+
+    # Attempt 2: Auto* with trust_remote_code (works on older transformers)
+    from transformers import AutoModelForCausalLM, AutoProcessor
+    processor = AutoProcessor.from_pretrained(
+        model_id, trust_remote_code=True, token=hf_token,
+    )
+    model = AutoModelForCausalLM.from_pretrained(
+        model_id, torch_dtype=dtype, device_map=device,
+        trust_remote_code=True, token=hf_token,
+    )
+    return model, processor
+
+
 class MusicFlamingoVerifier:
-    """Open-source audio-LLM verifier using NVIDIA Music/Audio Flamingo."""
+    """Open-source audio-LLM verifier using NVIDIA Audio Flamingo 3."""
 
     def __init__(
         self,
@@ -48,39 +72,30 @@ class MusicFlamingoVerifier:
     ):
         try:
             import torch  # noqa: F401
-            from transformers import AutoModelForCausalLM, AutoProcessor  # noqa: F401
+            from transformers import AutoProcessor  # noqa: F401
         except ImportError as e:
             raise ImportError(
                 "transformers + torch required. `pip install transformers torch`"
             ) from e
 
         import torch
-        from transformers import AutoModelForCausalLM, AutoProcessor
-
         dtype = getattr(torch, torch_dtype, torch.bfloat16)
         hf_token = hf_token or os.environ.get("HF_TOKEN")
 
-        log.info("Loading Music Flamingo: %s  (device=%s, dtype=%s)",
+        log.info("Loading Audio Flamingo: %s  (device=%s, dtype=%s)",
                  model_id, device, torch_dtype)
         try:
-            self.processor = AutoProcessor.from_pretrained(
-                model_id, trust_remote_code=True, token=hf_token,
-            )
-            self.model = AutoModelForCausalLM.from_pretrained(
-                model_id, torch_dtype=dtype,
-                device_map=device, trust_remote_code=True, token=hf_token,
+            self.model, self.processor = _load_model_and_processor(
+                model_id, dtype, device, hf_token,
             )
         except Exception as e:
-            hint = (
-                "Failed to load Music Flamingo. Check:\n"
-                "  1) HF_TOKEN is set and you accepted the model license.\n"
-                "  2) `transformers` is recent enough.\n"
-                "  3) Try an alternate model_id: "
-                f"{ALTERNATE_MODEL_IDS}\n"
-                "If you want to smoke-test without this model, use the \n"
-                "`--no-music-flamingo` CLI flag."
-            )
-            raise RuntimeError(hint) from e
+            raise RuntimeError(
+                f"Failed to load Audio Flamingo ({model_id}).\n"
+                f"  Underlying error: {type(e).__name__}: {e}\n"
+                f"  Fix: pip install --upgrade transformers\n"
+                f"  Or:  pip install git+https://github.com/huggingface/transformers.git\n"
+                f"  Alternates: {ALTERNATE_MODEL_IDS}"
+            ) from e
 
         self.model.eval()
         self.device = device

@@ -32,3 +32,7 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+slides/
+scripts/deep_analysis.py
+scripts/export_pptx.py
